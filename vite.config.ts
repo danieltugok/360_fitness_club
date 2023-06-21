@@ -9,6 +9,11 @@ export default defineConfig({
   plugins: [
     vue({
       template: { transformAssetUrls }
+      // template: {
+      //   compilerOptions: {
+      //     isCustomElement: (tag) => ['MobileMenu'].includes(tag),
+      //   }
+      // }
     }),
     quasar({
       sassVariables: 'src/quasar-variables.sass'

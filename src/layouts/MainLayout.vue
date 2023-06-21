@@ -3,70 +3,58 @@
   
       <q-header class="bg-primary text-white" height-hint="98">
         <q-toolbar>
-          <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+          <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" v-if="!$q.screen.lt.sm" />
   
-          <q-toolbar-title>
-            <q-avatar>
-              <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-            </q-avatar>
-            Title
-          </q-toolbar-title>
+          <RouterLink to="/signin" class="text-white">
+            <q-toolbar-title>
+              <!-- <q-avatar>
+                <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+              </q-avatar> -->
+              360 Fitness Club
+            </q-toolbar-title>
+          </RouterLink>
   
-          <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
+          <!-- <q-btn dense flat round icon="menu" @click="toggleRightDrawer" /> -->
         </q-toolbar>
   
-        <q-tabs align="left">
+        <!-- <q-tabs align="left">
           <q-route-tab to="/page1" label="Page One" />
           <q-route-tab to="/page2" label="Page Two" />
           <q-route-tab to="/page3" label="Page Three" />
-        </q-tabs>
+        </q-tabs> -->
       </q-header>
   
-      <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
+      <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered v-if="!$q.screen.lt.sm">
         <!-- drawer content -->
       </q-drawer>
   
       <q-drawer show-if-above v-model="rightDrawerOpen" side="right" bordered>
-        <!-- drawer content -->
+        <pre>{{ $q.screen }}</pre>
       </q-drawer>
   
       <q-page-container>
         <router-view />
       </q-page-container>
   
-      <q-footer class="bg-grey-8 text-white">
-        <q-toolbar>
-          <q-toolbar-title>
-            <q-avatar>
-              <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
-            </q-avatar>
-            <div>Title</div>
-          </q-toolbar-title>
-        </q-toolbar>
+      <q-footer class="bg-grey-8 text-white" v-if="$q.screen.lt.sm">
+        <MobileMenu />
       </q-footer>
   
     </q-layout>
   </template>
   
-  <script lang="ts">
+  <script setup lang="ts">
   import { ref } from 'vue'
-  
-  export default {
-    setup () {
-      const leftDrawerOpen = ref(false)
-      const rightDrawerOpen = ref(false)
-  
-      return {
-        leftDrawerOpen,
-        toggleLeftDrawer () {
-          leftDrawerOpen.value = !leftDrawerOpen.value
-        },
-  
-        rightDrawerOpen,
-        toggleRightDrawer () {
-          rightDrawerOpen.value = !rightDrawerOpen.value
-        }
-      }
-    }
-  }
+  import MobileMenu from '../components/MobileMenu.vue'
+
+  const leftDrawerOpen = ref(false);
+  const rightDrawerOpen = ref(false);
+
+  const toggleLeftDrawer = () => {
+    leftDrawerOpen.value = !leftDrawerOpen.value
+  };
+
+  const toggleRightDrawer = () =>{
+    rightDrawerOpen.value = !rightDrawerOpen.value
+  };
   </script>

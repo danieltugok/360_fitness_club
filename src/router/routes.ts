@@ -10,7 +10,7 @@ const routes: RouteRecordRaw[] = [
         },
         children: [
             {
-                path: '/',
+                path: '',
                 name: 'Main',
                 component: () => import('@/views/HomeView.vue'),
                 meta: {
