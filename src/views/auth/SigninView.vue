@@ -29,16 +29,19 @@
   }
 </script>
 
-
 <template>
   <q-page padding class="flex flex-center">
     <q-form @submit="onSubmit" class="full-width">      
       <q-card flat>
         <q-card-section>
-          <h6 class="text-h6 flex flex-center">Login</h6>
+          <h6 class="text-h6 flex flex-center">360 Fitness Club</h6>
         </q-card-section>
         <q-card-section>
-          <q-input v-model="email" type="email" label="Email" outlined :rules="[(val:string) => !!val || 'Required Field']" />
+          <q-input v-model="email" type="email" label="Email" outlined :rules="[(val:string) => !!val || 'Required Field']" >
+            <template v-slot:prepend>
+              <q-icon name="mdi-email-outline" color="primary" class="cursor-pointer" />
+            </template>
+          </q-input>
           <q-input 
             v-model="password"
             :type="showPassword ? 'text' : 'password'" 
@@ -47,6 +50,9 @@
             :rules="[(val:string) => !!val || 'Required Field']" 
             @keyup.enter="onSubmit"
           >
+            <template v-slot:prepend>
+              <q-icon name="mdi-form-textbox-password" color="primary" class="cursor-pointer" />
+            </template>
             <template #append>
               <q-icon 
                 :name="showPassword ? 'visibility_off' : 'visibility'"
@@ -55,19 +61,35 @@
               />
             </template>
           </q-input>
-          <RouterLink to="home" class="text-right">Forget the password?</RouterLink>
-          <div>
-            <q-btn
-              label="Submit"
-              type="submit"
-              color="primary"
-              class="full-width"
-              no-caps
-              unelevated
-              size="lg"
-            />
+          <div class="row justify-between" style="margin-top: -12px">
+            <q-space />
+            <router-link to="forgotpassword" class="text-primary pt-5" append>
+              Forgot password?
+            </router-link>
           </div>
         </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          <q-btn
+            :label="$t('LOGIN')"
+            color="primary"
+            class="full-width q-py-md q-mb-md"
+            no-caps
+            unelevated
+            type="submit"
+          />
+          <!-- <q-btn
+            :label="$t('CREATE_ACCOUNT')"
+            color="primary"
+            outline
+            class="full-width q-py-md"
+            no-caps
+            unelevated
+            to="/signup"
+          /> -->
+        </q-card-section>
+
+          
       </q-card>
       <div class="text-center q-mt-md text-caption">
         Doesnt have an account? <RouterLink to="home">Register now</RouterLink>

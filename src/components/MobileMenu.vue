@@ -12,19 +12,19 @@ const menuList = [
     icon: "dashboard",
     to: "/about",
     exact: true,
-    label: "Daily Workout", 
+    label: "Weekly Workout", 
   },
   {
     icon: "dashboard",
     to: "/",
     exact: true,
-    label: "Home", 
+    label: "Week Meal Plan", 
   },
   {
     icon: "dashboard",
     to: "/",
     exact: true,
-    label: "Home", 
+    label: "Sucess Tracker", 
   },
 ]
 
