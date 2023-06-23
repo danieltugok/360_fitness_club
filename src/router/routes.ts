@@ -18,8 +18,24 @@ const routes: RouteRecordRaw[] = [
                 }
             },
             {
-                path: 'about',
-                name: 'About',
+                path: 'weekly-workout',
+                name: 'Weekly-workout',
+                component: () => import('@/views/AboutView.vue'),
+                meta: {
+                    requireAuth: false
+                }
+            },
+            {
+                path: 'week-meal-plan',
+                name: 'Week-meal-plan',
+                component: () => import('@/views/AboutView.vue'),
+                meta: {
+                    requireAuth: false
+                }
+            },
+            {
+                path: 'sucess-tracker',
+                name: 'Sucess-tracker',
                 component: () => import('@/views/AboutView.vue'),
                 meta: {
                     requireAuth: false
